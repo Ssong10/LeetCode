@@ -6,21 +6,23 @@
 #         self.right = right
 from collections import deque
 def nextval(tree, pre,sum):
+    result = 0
     total = 0
+    pre.append(tree.val)
     for p in reversed(pre):
         total += p
         if total == sum:
             result += 1
     if tree.left:
-        pre.append(tree.left.val)
-        nextval(tree.left,pre,sum)
-        pre.pop()
+        result += nextval(tree.left,pre,sum)
     if tree.right:
-        pre.append(tree.right.val)
-        nextval(tree.right,pre,sum)
-        pre.pop()
+        result += nextval(tree.right,pre,sum)
+    pre.pop()
+    return result
 
 class Solution:
-    def pathSum(self, root: TreeNode, sum: int) -> int:
-        
-        return nextval(root,deque([root.val]),sum)
+    def pathSum(self, root: TreeNode, sum: int) -> int:    
+        if root:
+            return nextval(root,deque([]),sum)
+        else:
+            return 0
