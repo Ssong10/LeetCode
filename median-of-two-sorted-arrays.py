@@ -1,5 +1,4 @@
 # 100ms, 14.1MB
-
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         numslen = len(nums1) + len(nums2)
@@ -40,7 +39,6 @@ class Solution:
             return total/2
 
 # 84 ms	13.9 MB
-
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         nums3 = sorted(nums1 + nums2)
